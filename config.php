@@ -1,6 +1,6 @@
 <?php
 $site_name = "My Site";
-$css_path = "css/main.css";
+$css_path = "/css/main.css";
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";

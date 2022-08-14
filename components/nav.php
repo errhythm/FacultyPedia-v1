@@ -1,5 +1,6 @@
 <?php
-echo '<div class="bg-gray-900">
+echo '
+<div class="sticky top-0 bg-gray-900 z-10">
   <div class="px-4 py-6 mx-auto lg:py-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
     <div class="relative flex items-center justify-between lg:justify-center lg:space-x-16">
       <ul class="flex items-center hidden space-x-8 lg:flex">
@@ -14,7 +15,7 @@ echo '<div class="bg-gray-900">
           <rect x="14" y="1" width="7" height="6"></rect>
           <rect x="14" y="11" width="7" height="12"></rect>
         </svg>
-        <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">Company</span>
+        <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">FacultyPedia</span>
       </a>
       <ul class="flex items-center hidden space-x-8 lg:flex">
         <li><a href="/" aria-label="About us" title="About us" class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">About us</a></li>
@@ -81,5 +82,6 @@ echo '<div class="bg-gray-900">
       </div>
     </div>
   </div>
-</div>';
+</div>
+'
 ?>

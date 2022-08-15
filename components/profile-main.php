@@ -1,5 +1,3 @@
-<?php
-echo '
 <div class="px-8 py-10">
   <div class="container mx-auto px-4">
     <div class="flex flex-col items-center">
@@ -47,5 +45,3 @@ echo '
     </div>
   </div>
 </div>
-';
-?>

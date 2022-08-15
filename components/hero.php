@@ -1,5 +1,4 @@
-<?php
-echo '<div class="px-4 py-48 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-48">
+<div class="px-4 py-48 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-48">
   <div class="max-w-2xl mx-auto sm:max-w-xl md:max-w-2xl">
     <div class="text-center">
       <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -42,5 +41,4 @@ echo '<div class="px-4 py-48 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-x
       </p>
     </div>
   </div>
-</div>'
-?>
+</div>

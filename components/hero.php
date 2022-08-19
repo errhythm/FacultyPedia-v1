@@ -3,7 +3,7 @@
     <div class="text-center">
       <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
         <div>
-          <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+          <p class="inline-block px-3 py-px mb-4 text-sm font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
             Welcome To
           </p>
         </div>
@@ -22,9 +22,10 @@
           Faculty review and consultation management platform.
         </h2>
       </div>
-      <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
+      <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16" action="../pages/search.php" method="get">
         <input
           placeholder="Search..."
+          name="search"
           required=""
           type="text"
           class="flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"

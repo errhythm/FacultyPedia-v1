@@ -10,7 +10,7 @@
     require_once '../db/dbConnect.php';
     ?>
     <link href="<?php echo $css_path; ?>" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css" />
     <title>Schedule a Consultation - <?php echo $site_name; ?></title>
 </head>
 
@@ -43,7 +43,7 @@
     ?>
     <section class="bg-gray-100">
         <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+            <div class="grid gap-x-16 gap-y-8 lg:grid-cols-5">
                 <div class="lg:py-12 lg:col-span-2">
                     <h1 class="max-w-xl text-xl font-bold text-center">
                         Schedule a consultation with <?php if ($full_name != '') {
@@ -103,26 +103,21 @@
                         </div>
 
 
-                        <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
-                            <div>
-                                <input class="sr-only" id="option1" type="radio" tabindex="-1" />
-                                <label for="option1" class="block w-full p-3 border border-gray-200 rounded-lg" tabindex="0">
-                                    <span class="text-sm font-medium"> Option 1 </span>
-                                </label>
+                        <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
+                            <div class="relative">
+                                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                    <svg aria-hidden="true" class="w-5 h-5 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <input datepicker="" type="text" class="w-full p-3 text-sm border-gray-200 rounded-lg block w-full pl-10 p-2.5 datepicker-input" placeholder="Select date">
                             </div>
 
-                            <div>
-                                <input class="sr-only" id="option2" type="radio" tabindex="-1" />
-                                <label for="option2" class="block w-full p-3 border border-gray-200 rounded-lg" tabindex="0">
-                                    <span class="text-sm font-medium"> Option 2 </span>
-                                </label>
-                            </div>
 
                             <div>
-                                <input class="sr-only" id="option3" type="radio" tabindex="-1" />
-                                <label for="option3" class="block w-full p-3 border border-gray-200 rounded-lg" tabindex="0">
-                                    <span class="text-sm font-medium"> Option 3 </span>
-                                </label>
+                                <!-- create a time picker for time input -->
+                                <input type="text" class="w-full p-3 text-sm border-gray-200 rounded-lg block w-full pl-10 p-2.5 timepicker-input" placeholder="Select time">
+
                             </div>
                         </div>
 
@@ -146,6 +141,8 @@
         </div>
     </section>
 
+    <script src="https://unpkg.com/flowbite@1.5.2/dist/datepicker.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.2/dist/flowbite.js"></script>
 </body>
 <?php include('../components/footer.php'); ?>
 

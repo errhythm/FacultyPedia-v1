@@ -25,7 +25,7 @@
             else{
                     if($password == $confirm_password){
                         $password = md5($password);
-                        $sql = "INSERT INTO users (username, password, email, role) VALUES ('$username', '$password', '$email', '0')";
+                        $sql = "INSERT INTO users (username, password, email, role) VALUES ('$username', '$password', '$email', 'student')";
                         $result = mysqli_query($conn, $sql);
                         if($result){
                             session_start();

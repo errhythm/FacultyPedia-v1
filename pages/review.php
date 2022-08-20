@@ -15,7 +15,6 @@
 <body>
     <!-- Review a user with faculty role in database -->
     <?php
-    
         include('../components/nav.php'); 
     $id = $_GET['id'];
     $sql = "SELECT * FROM users WHERE id = $id AND role = 'faculty'";

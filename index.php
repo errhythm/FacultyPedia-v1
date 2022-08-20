@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +11,12 @@
 
     <title><?php echo $site_name; ?></title>
 </head>
+
 <body>
     <?php include('components/nav.php'); ?>
     <?php include('components/hero.php'); ?>
     <?php include('components/features.php'); ?>
     <?php include('components/footer.php'); ?>
 </body>
+
 </html>

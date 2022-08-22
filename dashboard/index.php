@@ -26,10 +26,25 @@
     $department = $row['department'];
 
     // get user's appointments
-    $sql = "SELECT * FROM appointments WHERE f_id = $id";
+    $sql = "SELECT * FROM appointments WHERE f_id = $id AND status = 'approved'";
     $result = mysqli_query($conn, $sql);
-    $appointments = mysqli_num_rows($result);
+    $approved_appointments = mysqli_num_rows($result);
 
+    // get user's pending appointments
+    $sql = "SELECT * FROM appointments WHERE f_id = $id AND status = 'pending'";
+    $result = mysqli_query($conn, $sql);
+    $pending_appointments = mysqli_num_rows($result);
+
+    // get user's completed appointments
+    $sql = "SELECT * FROM appointments WHERE f_id = $id AND status = 'completed'";
+    $result = mysqli_query($conn, $sql);
+    $completed_appointments = mysqli_num_rows($result);
+
+    // get faculty average rating
+    $sql = "SELECT AVG(stars) AS rating FROM review WHERE faculty = $id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $faculty_rating = $row['rating'];
 
     // get total number of users
     $sql = "SELECT * FROM users";
@@ -98,8 +113,8 @@
         </nav>
         <div class="relative md:ml-64 bg-blueGray-50 max-h-screen">
             <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
-                <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-                    <a class="text-white text-sm uppercase hidden lg:inline-block font-semibold" href="./index.html">Dashboard</a>
+                <div class="w-full mx-auto items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+                    <a class="text-white text-sm uppercase hidden lg:inline-block font-semibold" href="./">Dashboard</a>
 
                     <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
                         <a class="text-blueGray-500 block cursor-pointer" onclick="openDropdown(event,'user-dropdown')">
@@ -213,10 +228,73 @@
                                             <div class="flex flex-wrap">
                                                 <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                                                     <h5 class="text-blueGray-400 uppercase font-bold text-xs">
-                                                        Total Appointments
+                                                        Current Rating
                                                     </h5>
                                                     <span class="font-semibold text-xl text-blueGray-700">
-                                                        <?php echo $appointments; ?>
+                                                        <?php echo $faculty_rating; ?> ⭐
+                                                    </span>
+                                                </div>
+                                                <div class="relative w-auto pl-4 flex-initial">
+                                                    <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
+                                                        <i class="far fa-chart-bar"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                                    <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                        <div class="flex-auto p-4">
+                                            <div class="flex flex-wrap">
+                                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                                                        Ongoing Appointments
+                                                    </h5>
+                                                    <span class="font-semibold text-xl text-blueGray-700">
+                                                        <?php echo $approved_appointments; ?>
+                                                    </span>
+                                                </div>
+                                                <div class="relative w-auto pl-4 flex-initial">
+                                                    <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
+                                                        <i class="far fa-chart-bar"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                                    <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                        <div class="flex-auto p-4">
+                                            <div class="flex flex-wrap">
+                                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                                                        Pending Appointments
+                                                    </h5>
+                                                    <span class="font-semibold text-xl text-blueGray-700">
+                                                        <?php echo $pending_appointments; ?>
+                                                    </span>
+                                                </div>
+                                                <div class="relative w-auto pl-4 flex-initial">
+                                                    <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
+                                                        <i class="far fa-chart-bar"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                                    <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                        <div class="flex-auto p-4">
+                                            <div class="flex flex-wrap">
+                                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                                                        Completed Appointments
+                                                    </h5>
+                                                    <span class="font-semibold text-xl text-blueGray-700">
+                                                        <?php echo $completed_appointments; ?>
                                                     </span>
                                                 </div>
                                                 <div class="relative w-auto pl-4 flex-initial">
@@ -410,52 +488,13 @@
                             </div>
                         </div>
                     </div>
-                    <footer class="block py-4">
-                        <div class="container mx-auto px-4">
-                            <hr class="mb-4 border-b-1 border-blueGray-200" />
-                            <div class="flex flex-wrap items-center md:justify-between justify-center">
-                                <div class="w-full md:w-4/12 px-4">
-                                    <div class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
-                                        Copyright © <span id="get-current-year"></span>
-                                        <a href="https://www.creative-tim.com?ref=njs-dashboard" class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
-                                            Creative Tim
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-8/12 px-4">
-                                    <ul class="flex flex-wrap list-none md:justify-end justify-center">
-                                        <li>
-                                            <a href="https://www.creative-tim.com?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                Creative Tim
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.creative-tim.com/presentation?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                About Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://blog.creative-tim.com?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                Blog
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                MIT License
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
                 </div>
             <?php } ?>
 
             <?php if ($role == 'faculty') { ?>
                 <div class="px-4 md:px-10 mx-auto w-full -m-24">
                     <div class="flex flex-wrap mt-4">
-                        <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+                        <div class="w-full xl:w-12/12 mb-12 xl:mb-0 px-4">
                             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
                                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                                     <div class="flex flex-wrap items-center">
@@ -474,13 +513,13 @@
                                                     Appointment Time
                                                 </th>
                                                 <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                                                    Review
+                                                    Student
                                                 </th>
                                                 <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                                                    Faculty
+                                                    Message
                                                 </th>
                                                 <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                                                    Rating
+                                                    Course Name
                                                 </th>
                                                 <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"></th>
                                             </tr>
@@ -506,13 +545,13 @@
                                                 $updated_by = $row['updated_by'];
                                                 $appointment_date = date("F j, Y, g:i a", strtotime($date . " " . $time));
 
-                                                $sql2 = "SELECT * FROM students WHERE id = '$st_id'";
+                                                $sql2 = "SELECT * FROM users WHERE id = '$st_id'";
                                                 $result2 = mysqli_query($conn, $sql2);
                                                 $resultCheck2 = mysqli_num_rows($result2);
                                                 $row2 = mysqli_fetch_assoc($result2);
                                                 $st_name = $row2['username'];
 
-                                                $sql3 = "SELECT * FROM faculties WHERE id = '$f_id'";
+                                                $sql3 = "SELECT * FROM users WHERE id = '$f_id'";
                                                 $result3 = mysqli_query($conn, $sql3);
                                                 $resultCheck3 = mysqli_num_rows($result3);
                                                 $row3 = mysqli_fetch_assoc($result3);
@@ -521,42 +560,24 @@
                                                 <tbody>
                                                     <tr>
                                                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                                                            <img src="https://avatars.dicebear.com/api/bottts/<?php echo $appointment_date; ?>.png" class="h-12 w-12 bg-white rounded-full border" alt="..." />
                                                             <span class="ml-3 font-bold text-blueGray-600">
                                                                 <?php echo $appointment_date; ?>
                                                             </span>
                                                         </th>
-                                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?php echo $review; ?></td>
                                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                            <span class="ml-3 font-bold text-blueGray-600"><?php echo $facultyName; ?></span>
+                                                            <span class="ml-3 font-bold text-blueGray-600"><?php echo $st_name; ?></span>
                                                         </td>
+                                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?php echo $message; ?></td>
                                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                            <div class="flex items-center xl:col-span-1">
-                                                                <div class="flex items-center">
-                                                                    <div class="rating rating-sm rating-half">
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="rating-hidden" value="0" disabled />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-1" value="0.5" <?php echo ($stars == 0.5 ? ' checked disabled' : 'disabled'); ?>' />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-2" value="1" <?php echo ($stars == 1 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-1" value="1.5" <?php echo ($stars == 1.5 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-2" value="2" <?php echo ($stars == 2 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-1" value="2.5" <?php echo ($stars == 2.5 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-2" value="3" <?php echo ($stars == 3 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-1" value="3.5" <?php echo ($stars == 3.5 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-2" value="4" <?php echo ($stars == 4 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-1" value="4.5" <?php echo ($stars == 4.5 ? 'checked disabled' : 'disabled'); ?> />
-                                                                        <input type="radio" name="rating-id-<?php echo $id; ?>" class="bg-accent mask mask-star-2 mask-half-2" value="5" <?php echo ($stars == 5 ? 'checked disabled' : 'disabled'); ?> />
-                                                                    </div>
-                                                                </div>
-                                                                <p class="ml-3 text-sm text-gray-700"><?php echo $stars; ?><span class="sr-only"> out of 5 stars</span></p>
-                                                            </div>
+                                                            <span class="ml-3 font-bold text-blueGray-600"><?php echo $course_name; ?></span>
                                                         </td>
                                                         <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                                                            <a href="#" class="text-blueGray-500 block py-1 px-3" onclick="openDropdown(event,'table-review-<?php echo $review_id; ?>-dropdown')">
+                                                            <a href="#" class="text-blueGray-500 block py-1 px-3" onclick="openDropdown(event,'table-appointment-<?php echo $appointment_id; ?>-dropdown')">
                                                                 <i class="fas fa-ellipsis-v"></i>
                                                             </a>
-                                                            <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48" id="table-review-<?php echo $review_id; ?>-dropdown">
-                                                                <a href="../components/pending-review.php?rev_id=<?php echo $review_id; ?>&status=approved" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-green-700">Approve</a>
-                                                                <a href="../components/pending-review.php?rev_id=<?php echo $review_id; ?>&status=rejected" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-red-700">Reject</a>
+                                                            <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48" id="table-appointment-<?php echo $appointment_id; ?>-dropdown">
+                                                                <a href="../components/pending-appointment.php?ap_id=<?php echo $appointment_id; ?>&status=approved" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-green-700">Approve</a>
+                                                                <a href="../components/pending-appointment.php?ap_id=<?php echo $appointment_id; ?>&status=rejected" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-red-700">Reject</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -571,108 +592,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="w-full xl:w-4/12 px-4">
-                            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-                                <div class="rounded-t mb-0 px-4 py-3 border-0">
-                                    <div class="flex flex-wrap items-center">
-                                        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                                            <h3 class="font-semibold text-base text-blueGray-700">
-                                                Top Reviewed Faculty
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="block w-full overflow-x-auto">
-                                    <table class="items-center w-full bg-transparent border-collapse">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                                    Name
-                                                </th>
-                                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                                    Reviews
-                                                </th>
-                                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $sql = "SELECT faculty, COUNT(*) AS num_reviews, AVG(stars) AS avg_stars FROM review WHERE status = 'approved' GROUP BY faculty ORDER BY num_reviews DESC, avg_stars DESC";
-                                            $result = mysqli_query($conn, $sql);
-                                            if (mysqli_num_rows($result) > 0) {
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                    $faculty = $row['faculty'];
-                                                    $num_reviews = $row['num_reviews'];
-                                                    $avg_stars = $row['avg_stars'];
-                                                    $sql = "SELECT username FROM users WHERE id = '$faculty'";
-                                                    $result2 = mysqli_query($conn, $sql);
-                                                    $row2 = mysqli_fetch_assoc($result2);
-                                                    $faculty_name = $row2['username'];
-                                            ?>
-                                                    <tr>
-                                                        <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left"><?php echo $faculty_name; ?></th>
-                                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><?php echo $num_reviews; ?></td>
-                                                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                            <div class="flex items-center">
-                                                                <span class="mr-2"><?php echo $avg_stars; ?></span>
-                                                                <div class="relative w-full">
-                                                                    <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                                                                        <div style="width: <?php echo $avg_stars / 5 * 100; ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                            <?php
-                                                }
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <footer class="block py-4">
-                        <div class="container mx-auto px-4">
-                            <hr class="mb-4 border-b-1 border-blueGray-200" />
-                            <div class="flex flex-wrap items-center md:justify-between justify-center">
-                                <div class="w-full md:w-4/12 px-4">
-                                    <div class="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
-                                        Copyright © <span id="get-current-year"></span>
-                                        <a href="https://www.creative-tim.com?ref=njs-dashboard" class="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1">
-                                            Creative Tim
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="w-full md:w-8/12 px-4">
-                                    <ul class="flex flex-wrap list-none md:justify-end justify-center">
-                                        <li>
-                                            <a href="https://www.creative-tim.com?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                Creative Tim
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.creative-tim.com/presentation?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                About Us
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://blog.creative-tim.com?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                Blog
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-dashboard" class="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3">
-                                                MIT License
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
                 </div>
             <?php } ?>
         </div>
@@ -709,8 +629,6 @@
         }
 
         (function() {
-            /* Chart initialisations */
-            /* Line Chart */
             var config = {
                 type: "line",
                 data: {

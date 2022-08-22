@@ -75,60 +75,67 @@
                 </div>
 
                 <div class="p-8 bg-white rounded-lg shadow-lg lg:p-12 lg:col-span-3">
-                    <form action="../pages/consultation.php" method="post" class="space-y-4">
-                        <div>
-                            <label class="sr-only" for="name">Name</label>
-                            <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Name" type="text" id="name" name="name" value="<?php echo $st_full_name; ?>" disabled />
-                            <input type="hidden" id="st_id" name="st_id" value="<?php echo $st_id; ?>">
-                            <input type="hidden" id="id" name="f_id" value="<?php echo $id; ?>">
+                    <?php if ($st_full_name == 'NULL' or $st_full_name == '' or $st_department == 'NULL' or $st_department == '') { ?>
+                        <div class="text-center">
+                            <p class="text-lg font-bold text-gray-600">Please update your profile to schedule a consultation</p>
+                            <a href="../pages/edit-profile.php" class="text-lg font-bold text-pink-600">Update Profile</a>
                         </div>
-                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <?php } else { ?>
+                        <form action="../pages/consultation.php" method="post" class="space-y-4">
                             <div>
-                                <label class="sr-only" for="email">Email</label>
-                                <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Email address" type="email" id="email" name="email" value="<?php echo $st_email; ?>" disabled />
+                                <label class="sr-only" for="name">Name</label>
+                                <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Name" type="text" id="name" name="name" value="<?php echo $st_full_name; ?>" disabled />
+                                <input type="hidden" id="st_id" name="st_id" value="<?php echo $st_id; ?>">
+                                <input type="hidden" id="id" name="f_id" value="<?php echo $id; ?>">
                             </div>
-                            <div>
-                                <label class="sr-only" for="department">Department</label>
-                                <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Department" type="text" id="Department" name="Department" value="<?php echo $st_department; ?>" disabled />
-                            </div>
-                        </div>
-                        <div>
-                            <label class="sr-only" for="course_name">Course Name</label>
-                            <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Course Name" type="text" id="course_name" name="course_name" />
-                        </div>
-
-
-                        <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
-                            <div class="relative">
-                                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                    </svg>
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <div>
+                                    <label class="sr-only" for="email">Email</label>
+                                    <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Email address" type="email" id="email" name="email" value="<?php echo $st_email; ?>" disabled />
                                 </div>
-                                <input type="date" name="date" class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg block w-full pl-10 p-2.5 datepicker-input" placeholder="Select date">
+                                <div>
+                                    <label class="sr-only" for="department">Department</label>
+                                    <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Department" type="text" id="Department" name="Department" value="<?php echo $st_department; ?>" disabled />
+                                </div>
                             </div>
                             <div>
-                                <input type="time" name="time" class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg block w-full pl-10 p-2.5 timepicker-input" placeholder="Select time">
+                                <label class="sr-only" for="course_name">Course Name</label>
+                                <input class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Course Name" type="text" id="course_name" name="course_name" />
                             </div>
-                        </div>
-                        <div>
-                            <label class="sr-only" for="message">Message</label>
-                            <textarea class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Message" rows="8" name="message" id="message"></textarea>
-                        </div>
-                        <div class="mt-4">
-                            <button type="submit" name="submit" class="btn gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
-                                    <path d="M9 20H6C3.79086 20 2 18.2091 2 16V7C2 4.79086 3.79086 3 6 3H17C19.2091 3 21 4.79086 21 7V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M8 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M15 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M2 8H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M18.5 15.6429L17 17.1429" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <circle cx="17" cy="17" r="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                Schedule a Consultation
-                            </button>
-                        </div>
-                    </form>
+
+
+                            <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
+                                <div class="relative">
+                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                        <svg aria-hidden="true" class="w-5 h-5 " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <input type="date" name="date" class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg block w-full pl-10 p-2.5 datepicker-input" placeholder="Select date">
+                                </div>
+                                <div>
+                                    <input type="time" name="time" class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg block w-full pl-10 p-2.5 timepicker-input" placeholder="Select time">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="sr-only" for="message">Message</label>
+                                <textarea class="w-full p-3 text-sm bg-gray-100 border-gray-500 rounded-lg" placeholder="Message" rows="8" name="message" id="message"></textarea>
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit" name="submit" class="btn gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 20H6C3.79086 20 2 18.2091 2 16V7C2 4.79086 3.79086 3 6 3H17C19.2091 3 21 4.79086 21 7V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M2 8H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M18.5 15.6429L17 17.1429" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        <circle cx="17" cy="17" r="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    Schedule a Consultation
+                                </button>
+                            </div>
+                        </form>
+                    <?php } ?>
                 </div>
             </div>
         </div>

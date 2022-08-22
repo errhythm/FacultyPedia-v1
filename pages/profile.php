@@ -45,7 +45,8 @@
 	<main class="profile-page">
 		<section class="relative block h-96">
 			<div class="absolute top-0 w-full h-full bg-center bg-cover bg-gradient-to-r from-purple-500 to-pink-500">
-				<span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+				<!-- <img class="top-0 w-full h-full bg-center bg-cover" src="https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80" alt=""> -->
+
 			</div>
 		</section>
 		<section class="relative py-16 bg-blueGray-200">

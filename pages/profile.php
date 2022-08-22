@@ -35,10 +35,6 @@
 	$visitor_username = $row2['username'];
 	?>
 
-
-	<!-- New Profile -->
-	<!-- component
-	<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> -->
 	<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
 
@@ -46,7 +42,6 @@
 		<section class="relative block h-96">
 			<div class="absolute top-0 w-full h-full bg-center bg-cover bg-gradient-to-r from-purple-500 to-pink-500">
 				<!-- <img class="top-0 w-full h-full bg-center bg-cover" src="https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80" alt=""> -->
-
 			</div>
 		</section>
 		<section class="relative py-16 bg-blueGray-200">
@@ -99,7 +94,7 @@
 							</h3>
 							<?php if ($department != '') { ?>
 								<div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-									<i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i><?php echo $department; ?>
+									<i class="fas fa-graduation-cap mr-2 text-lg text-blueGray-400"></i><?php echo $department; ?>
 								</div>
 							<?php } ?>
 							<?php
@@ -363,7 +358,6 @@
 											}
 										}
 									}
-
 									?>
 								</div>
 							</div>

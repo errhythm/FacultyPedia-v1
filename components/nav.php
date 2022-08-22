@@ -7,6 +7,7 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $full_name = $row['full_name'];
 $department = $row['department'];
+$nav_role = $row['role'];
 ?>
 <div class="sticky top-0 z-10">
   <div class="navbar bg-gray-900 px-4 py-4 shadow-md">
@@ -31,6 +32,12 @@ $department = $row['department'];
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal p-0">
         <li><a href="/pages/search.php" aria-label="Search" title="Search" class="text-white">Search</a></li>
+        <?php
+        // if user is faculty or admin show dashboard
+        if ($nav_role == 'faculty' || $nav_role == 'admin') {
+          echo '<li><a href="/dashboard" aria-label="Dashboard" title="Dashboard" class="text-white">Dashboard</a></li>';
+        }
+        ?>
         <?php
         if (!isset($_SESSION['username'])) {
           echo '<li><a href="../pages/login.php" class="text-white">Sign In</a></li>';

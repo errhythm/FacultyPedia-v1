@@ -12,9 +12,9 @@
 
 **Email: ehsanur.rahman.rhythm@g.bracu.ac.bd**
 
-_ **Project Title** _: Faculty Review and Consultancy Management system
+**Project Title**: Faculty Review and Consultancy Management system
 
-_ **Project Features** __ **:** _
+**Project Features:**
 
 By the end of this course, implemented features:
 
@@ -28,9 +28,9 @@ By the end of this course, implemented features:
 8. Anonymous review system for students (Faculty will always see anonymous review)
 9. Anonymous review goes for approval to the admin before they are shown
 
-_ **Screenshots** _ **:**
+**Screenshots:**
 
-_ **Online Resources used** __ **:** _
+**Online Resources used:** 
 
 1. Reference:
 
@@ -40,7 +40,7 @@ _ **Online Resources used** __ **:** _
 1. https://daisyui.com.
 2. https://tailwindcomponents.com
 
-_ **Future Enhancements** __ **:** _Following enhancement can be added to the current system which will improve the system.
+**Future Enhancements:** _Following enhancement can be added to the current system which will improve the system.
 1. Use of WebRTC in Consultation so that the consultation can be done online in video call
 2. Email Verification with SMTP mail system
 3. Other bug fixes.

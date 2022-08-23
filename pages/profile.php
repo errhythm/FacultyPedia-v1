@@ -10,7 +10,7 @@
 	require_once '../db/dbConnect.php';
 	?>
 	<link href="<?php echo $css_path; ?>" rel="stylesheet">
-	<title><?php echo $site_name; ?></title>
+	<title>Profile - <?php echo $site_name; ?></title>
 </head>
 
 <body>

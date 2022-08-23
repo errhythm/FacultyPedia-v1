@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
                     header("Location: ../pages/review.php?id=$faculty");
                 } else {
                     $_SESSION['revsuccess'] = "1";
-                    header("Location: ../pages/review.php?id=$faculty");
+                    header("Location: ../pages/profile.php?id=$faculty");
                 }
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);

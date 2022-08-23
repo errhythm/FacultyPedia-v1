@@ -22,7 +22,7 @@
       <div>
         <h6 class="mb-3 text-xl font-bold leading-5">The deep ocean</h6>
         <p class="mb-3 text-sm text-gray-900">
-          A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn\'t even know we were calling him Big Bear. We never had the chance to.
+          A flower in my garden, a mystery in my parties. Heart attack never stopped old Big Bear. I didn\'t even know we were calling him Big Bear. We never had the chance to.
         </p>
         <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
       </div>

@@ -34,13 +34,13 @@ By the end of this course, implemented features:
 
 1. Reference:
 
-- W3schools.com
-- https://tailwindcomponents.com/cheatsheet
-- https://flowbite.com.
-1. https://daisyui.com.
-2. https://tailwindcomponents.com
+1. W3schools.com
+2. tailwindcomponents.com/cheatsheet
+  - flowbite.com.
+  - daisyui.com.
+  - tailwindcomponents.com
 
-**Future Enhancements:** _Following enhancement can be added to the current system which will improve the system.
+**Future Enhancements:** Following enhancement can be added to the current system which will improve the system.
 1. Use of WebRTC in Consultation so that the consultation can be done online in video call
 2. Email Verification with SMTP mail system
 3. Other bug fixes.

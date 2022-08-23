@@ -36,6 +36,7 @@ By the end of this course, implemented features:
 
 * W3schools.com
 * tailwindcomponents.com/cheatsheet
+* Sites used:
   - flowbite.com.
   - daisyui.com.
   - tailwindcomponents.com

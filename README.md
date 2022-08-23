@@ -34,8 +34,8 @@ By the end of this course, implemented features:
 
 1. Reference:
 
-1. W3schools.com
-2. tailwindcomponents.com/cheatsheet
+* W3schools.com
+* tailwindcomponents.com/cheatsheet
   - flowbite.com.
   - daisyui.com.
   - tailwindcomponents.com

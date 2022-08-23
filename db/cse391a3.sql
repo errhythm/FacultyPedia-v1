@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 03, 2022 at 06:27 PM
+-- Generation Time: Aug 23, 2022 at 07:26 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+06:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,73 +28,63 @@ SET time_zone = "+06:00";
 --
 
 CREATE TABLE `appointments` (
-  `id` int(6) UNSIGNED NOT NULL,
-  `mechanic_id` int(6) NOT NULL,
-  `car_id` int(6) NOT NULL,
-  `user_id` int(6) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
+  `st_id` int(11) UNSIGNED NOT NULL,
+  `f_id` int(11) UNSIGNED NOT NULL,
+  `course_name` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0'
+  `message` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `created_by` int(11) UNSIGNED NOT NULL,
+  `updated_by` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `mechanic_id`, `car_id`, `user_id`, `date`, `time`, `status`) VALUES
-(14, 5, 12, 1, '2022-06-30', '20:55:00', 0),
-(15, 10, 9, 2, '2022-07-01', '11:47:00', 0),
-(16, 4, 14, 1, '2022-07-01', '02:47:00', 0),
-(17, 4, 13, 1, '2022-07-01', '10:52:00', 0);
+INSERT INTO `appointments` (`id`, `st_id`, `f_id`, `course_name`, `date`, `time`, `message`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
+(1, 26, 23, 'ASDA', '2022-08-11', '23:05:00', 'ADA', 'pending', '2022-08-21 20:05:38', '2022-08-21 20:05:38', 26, 26),
+(3, 26, 23, 'CSE391', '2022-08-11', '21:08:00', 'asdasd', 'approved', '2022-08-21 20:08:50', '2022-08-21 20:08:50', 26, 26),
+(4, 26, 25, 'CSE391', '2022-08-22', '12:12:00', 'Rfgsdfgfdgfdg', 'pending', '2022-08-21 20:12:42', '2022-08-21 20:12:42', 26, 26);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cars`
+-- Table structure for table `review`
 --
 
-CREATE TABLE `cars` (
-  `id` int(6) UNSIGNED NOT NULL,
-  `car_license` varchar(50) NOT NULL,
-  `car_registration` varchar(50) NOT NULL,
-  `car_model` varchar(50) NOT NULL,
-  `user_id` int(6) NOT NULL
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL,
+  `course` varchar(255) NOT NULL,
+  `review` varchar(255) NOT NULL,
+  `stars` float NOT NULL,
+  `faculty` varchar(11) NOT NULL,
+  `student` varchar(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `anonymous` tinyint(1) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cars`
+-- Dumping data for table `review`
 --
 
-INSERT INTO `cars` (`id`, `car_license`, `car_registration`, `car_model`, `user_id`) VALUES
-(9, 'GA-11-3113', '3698569856', 'Toyota Axio X Hybrid 2016', 2),
-(10, 'GA-11-1112', '5698523356', 'Toyota Axio X 2012', 3),
-(12, 'GA-77-3183', 'A9UUNFEB2A2NDUUYH', 'Honda Grace LX 2018', 1),
-(13, 'GA-59-6329', 'YMXR72EZ4AYWR9C50', 'Toyota Premio EX 2016', 1),
-(14, 'GHA-11-9018', 'J3P8SJSN7AXTEWD3F', 'Mitsubishi Outlandar SUNROOF 2006', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mechanics`
---
-
-CREATE TABLE `mechanics` (
-  `mechanic_id` int(6) UNSIGNED NOT NULL,
-  `mechanic_name` varchar(255) NOT NULL,
-  `mechanic_age` int(10) NOT NULL,
-  `mechanic_phone` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `mechanics`
---
-
-INSERT INTO `mechanics` (`mechanic_id`, `mechanic_name`, `mechanic_age`, `mechanic_phone`) VALUES
-(2, 'Rahim', 30, '01700000000'),
-(3, 'Selim', 35, '01800000000'),
-(4, 'Sabbir', 24, '01900000000'),
-(5, 'Sohel', 28, '01500000000'),
-(10, 'Bodrul', 32, '01600000000');
+INSERT INTO `review` (`id`, `course`, `review`, `stars`, `faculty`, `student`, `date`, `anonymous`, `status`) VALUES
+(1, 'CSE391', 'Rhythm', 4, '25', '26', '2022-08-19 11:58:14', 0, 'approved'),
+(7, 'CSE420', 'dasdasd', 5, '25', '26', '2022-08-19 11:58:14', 1, 'pending'),
+(8, 'CSE221', 'AS', 3, '25', '23', '2022-08-19 12:25:57', 0, 'approved'),
+(9, 'CSE360', 'Nice, really nice. ', 5, '25', '23', '2022-08-19 12:53:31', 0, 'approved'),
+(10, 'CSE251', 'asdasddfsdgfdsgdfhgdfdfgdfgdf', 4.5, '25', '26', '2022-08-19 14:47:10', 1, 'pending'),
+(11, 'CSE331', 'sadaSdasd', 2.5, '25', '26', '2022-08-19 14:48:39', 1, 'pending'),
+(13, 'CSE391', 'asdasd', 4.5, '23', '26', '2022-08-19 16:27:43', 0, 'approved'),
+(14, 'CSE301', 'SAdasdasd', 1.5, '25', '26', '2022-08-21 15:05:39', 1, 'approved'),
+(15, 'CSE438', 'Very Bad faculty. ', 0.5, '25', '21', '2022-08-21 15:28:16', 1, 'approved'),
+(16, 'CSE391', 'Shit', 0.5, '25', '21', '2022-08-21 18:02:41', 1, 'rejected'),
+(17, 'CSE392', 'Shitsdsd', 3, '25', '21', '2022-08-21 18:03:22', 1, 'pending');
 
 -- --------------------------------------------------------
 
@@ -107,20 +97,23 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `role` int(1) NOT NULL DEFAULT '0',
-  `address` varchar(255) DEFAULT NULL,
-  `phone` varchar(50) DEFAULT NULL,
-  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `role` varchar(255) NOT NULL DEFAULT 'student',
+  `department` varchar(255) DEFAULT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `full_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `address`, `phone`, `reg_date`) VALUES
-(1, 'rhythm', '7b7a88659b9de5eb90449a083e1dc621', 'errhythm.me@gmail.com', 1, '17/C, Nabiha Mansion, Maricha Garden, East Razabazar, Farmgate', '01779092201', '2022-07-01 05:57:22'),
-(2, 'shv', '85e074b6e6a348c07cd5a5dd3a28c7be', 'shv@shv.com', 0, '9740 SW BANK RD', '3093040892', '2022-07-01 04:43:18'),
-(21, 'abc', '900150983cd24fb0d6963f7d28e17f72', 'abc@abc.abc', 0, NULL, NULL, '2022-07-01 05:40:57');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `department`, `reg_date`, `full_name`) VALUES
+(1, 'rhythm', '7b7a88659b9de5eb90449a083e1dc621', 'errhythm.me@gmail.com', 'admin', '17/C, Nabiha Mansion, Maricha Garden, East Razabazar, Farmgate', '2022-08-22 17:33:45', 'Ehsanur Rahman Rhyth'),
+(2, 'shv', '85e074b6e6a348c07cd5a5dd3a28c7be', 'shv@shv.com', 'student', '9740 SW BANK RD', '2022-08-18 13:08:07', 'Rajvir'),
+(21, 'abc', '900150983cd24fb0d6963f7d28e17f72', 'abc@abc.abc', 'student', '', '2022-08-18 13:08:09', 'ABC'),
+(23, '20101298', '7b7a88659b9de5eb90449a083e1dc621', 'ehsanur.rahman.rhythm@g.bracu.ac.bd', 'faculty', 'Computer Science & Engineering', '2022-08-21 12:06:01', 'Ehsanur Rahman Rhythm'),
+(25, '20141003', 'ab02e29e0ede868f6d1bf5074e1a47b2', 'shv@ph.com', 'faculty', 'Computer Science', '2022-08-18 14:03:23', NULL),
+(26, '20101129', 'ea37cf12bc41ad89c8bba341a5a66065', 'arnob@arnob.com', 'student', 'Computer Science & eNgiNeeRiNg', '2022-08-21 12:54:47', 'Shafakat Arnob');
 
 --
 -- Indexes for dumped tables
@@ -133,16 +126,10 @@ ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cars`
+-- Indexes for table `review`
 --
-ALTER TABLE `cars`
+ALTER TABLE `review`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mechanics`
---
-ALTER TABLE `mechanics`
-  ADD PRIMARY KEY (`mechanic_id`);
 
 --
 -- Indexes for table `users`
@@ -158,25 +145,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `cars`
+-- AUTO_INCREMENT for table `review`
 --
-ALTER TABLE `cars`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `mechanics`
---
-ALTER TABLE `mechanics`
-  MODIFY `mechanic_id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

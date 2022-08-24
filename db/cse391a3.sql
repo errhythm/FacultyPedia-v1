@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 23, 2022 at 07:26 AM
+-- Generation Time: Aug 24, 2022 at 06:43 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -49,7 +49,8 @@ CREATE TABLE `appointments` (
 INSERT INTO `appointments` (`id`, `st_id`, `f_id`, `course_name`, `date`, `time`, `message`, `status`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
 (1, 26, 23, 'ASDA', '2022-08-11', '23:05:00', 'ADA', 'pending', '2022-08-21 20:05:38', '2022-08-21 20:05:38', 26, 26),
 (3, 26, 23, 'CSE391', '2022-08-11', '21:08:00', 'asdasd', 'approved', '2022-08-21 20:08:50', '2022-08-21 20:08:50', 26, 26),
-(4, 26, 25, 'CSE391', '2022-08-22', '12:12:00', 'Rfgsdfgfdgfdg', 'pending', '2022-08-21 20:12:42', '2022-08-21 20:12:42', 26, 26);
+(4, 26, 25, 'CSE391', '2022-08-22', '12:12:00', 'Rfgsdfgfdgfdg', 'pending', '2022-08-21 20:12:42', '2022-08-21 20:12:42', 26, 26),
+(5, 28, 27, 'CSE391', '2022-08-24', '12:30:00', 'Need help', 'approved', '2022-08-23 09:34:32', '2022-08-23 09:34:32', 28, 28);
 
 -- --------------------------------------------------------
 
@@ -74,17 +75,16 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`id`, `course`, `review`, `stars`, `faculty`, `student`, `date`, `anonymous`, `status`) VALUES
-(1, 'CSE391', 'Rhythm', 4, '25', '26', '2022-08-19 11:58:14', 0, 'approved'),
-(7, 'CSE420', 'dasdasd', 5, '25', '26', '2022-08-19 11:58:14', 1, 'pending'),
-(8, 'CSE221', 'AS', 3, '25', '23', '2022-08-19 12:25:57', 0, 'approved'),
-(9, 'CSE360', 'Nice, really nice. ', 5, '25', '23', '2022-08-19 12:53:31', 0, 'approved'),
-(10, 'CSE251', 'asdasddfsdgfdsgdfhgdfdfgdfgdf', 4.5, '25', '26', '2022-08-19 14:47:10', 1, 'pending'),
-(11, 'CSE331', 'sadaSdasd', 2.5, '25', '26', '2022-08-19 14:48:39', 1, 'pending'),
-(13, 'CSE391', 'asdasd', 4.5, '23', '26', '2022-08-19 16:27:43', 0, 'approved'),
-(14, 'CSE301', 'SAdasdasd', 1.5, '25', '26', '2022-08-21 15:05:39', 1, 'approved'),
-(15, 'CSE438', 'Very Bad faculty. ', 0.5, '25', '21', '2022-08-21 15:28:16', 1, 'approved'),
-(16, 'CSE391', 'Shit', 0.5, '25', '21', '2022-08-21 18:02:41', 1, 'rejected'),
-(17, 'CSE392', 'Shitsdsd', 3, '25', '21', '2022-08-21 18:03:22', 1, 'pending');
+(18, 'CSE438', 'Very Great Faculty', 5, '27', '28', '2022-08-23 03:11:40', 0, 'approved'),
+(19, 'CSE222', 'Very Nice.', 4.5, '30', '28', '2022-08-23 03:12:36', 0, 'approved'),
+(20, 'MAT110', 'Welcoming as usual.', 4.5, '31', '28', '2022-08-23 03:13:06', 0, 'approved'),
+(21, 'BUS201', 'Clears the topic really well.', 5, '32', '28', '2022-08-23 03:14:00', 0, 'approved'),
+(22, 'BUS201', 'Polite.', 4, '32', '33', '2022-08-23 03:14:39', 0, 'approved'),
+(23, 'CSE222', 'Great', 4.5, '30', '33', '2022-08-23 03:14:51', 0, 'approved'),
+(24, 'CSE438', 'Awesome guy!', 5, '27', '33', '2022-08-23 03:15:06', 0, 'approved'),
+(25, 'CSE110', 'Great faculty!', 4, '27', '33', '2022-08-23 03:15:45', 1, 'approved'),
+(26, 'CSE111', 'Great', 4.5, '27', '28', '2022-08-23 03:33:25', 0, 'approved'),
+(27, 'CSE1210', 'dfasdf', 5, '27', '28', '2022-08-23 03:34:05', 1, 'rejected');
 
 -- --------------------------------------------------------
 
@@ -108,12 +108,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `department`, `reg_date`, `full_name`) VALUES
-(1, 'rhythm', '7b7a88659b9de5eb90449a083e1dc621', 'errhythm.me@gmail.com', 'admin', '17/C, Nabiha Mansion, Maricha Garden, East Razabazar, Farmgate', '2022-08-22 17:33:45', 'Ehsanur Rahman Rhyth'),
-(2, 'shv', '85e074b6e6a348c07cd5a5dd3a28c7be', 'shv@shv.com', 'student', '9740 SW BANK RD', '2022-08-18 13:08:07', 'Rajvir'),
-(21, 'abc', '900150983cd24fb0d6963f7d28e17f72', 'abc@abc.abc', 'student', '', '2022-08-18 13:08:09', 'ABC'),
-(23, '20101298', '7b7a88659b9de5eb90449a083e1dc621', 'ehsanur.rahman.rhythm@g.bracu.ac.bd', 'faculty', 'Computer Science & Engineering', '2022-08-21 12:06:01', 'Ehsanur Rahman Rhythm'),
-(25, '20141003', 'ab02e29e0ede868f6d1bf5074e1a47b2', 'shv@ph.com', 'faculty', 'Computer Science', '2022-08-18 14:03:23', NULL),
-(26, '20101129', 'ea37cf12bc41ad89c8bba341a5a66065', 'arnob@arnob.com', 'student', 'Computer Science & eNgiNeeRiNg', '2022-08-21 12:54:47', 'Shafakat Arnob');
+(27, 'TRZ', 'bfb030d858c745b0a72340de2ae7f1ad', 'trz@bracu.ac.bd', 'faculty', 'Computer Science & Engineering', '2022-08-23 03:03:51', NULL),
+(28, '20101298', '7b7a88659b9de5eb90449a083e1dc621', 'ehsanur.rahman.rhythm@g.bracu.ac.bd', 'student', 'Computer Science & Engineering', '2022-08-23 03:07:04', 'Ehsanur Rahman'),
+(29, '20141003', 'ab02e29e0ede868f6d1bf5074e1a47b2', 'rajvir.ahmed.shuvo@g.bracu.ac.bd', 'student', 'Computer Science', '2022-08-23 03:07:26', 'Rajvir Ahmed'),
+(30, 'MOB', '41f02b07e8e203d3260facb55b2f4b1b', 'mob@bracu.ac.bd', 'faculty', 'Mathematics & Natural Science', '2022-08-23 03:07:42', NULL),
+(31, 'PHR', 'b266e47eb657161825cded6cc0dd5730', 'phr@bracu.ac.bd', 'faculty', 'Computer Science & Engineering', '2022-08-23 03:07:59', NULL),
+(32, 'DBS', '85afaab5f3b6a638269e33d12da2fedf', 'dbs@bracu.ac.bd', 'faculty', 'Bracu Business School', '2022-08-23 03:08:13', NULL),
+(33, '20101129', 'ea37cf12bc41ad89c8bba341a5a66065', 'shafakat@g.bracu.ac.bd', 'student', 'Computer Science & Engineering', '2022-08-23 03:08:32', NULL),
+(34, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@bracu.ac.bd', 'admin', NULL, '2022-08-23 03:16:26', NULL),
+(35, 'NZN', '86080b0f3c8464151ec0d8b0bbffd0f6', 'nzn@bracu.ac.bd', 'faculty', NULL, '2022-08-23 03:32:16', NULL);
 
 --
 -- Indexes for dumped tables
@@ -145,19 +148,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

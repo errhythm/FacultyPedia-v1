@@ -28,7 +28,6 @@ By the end of this course, implemented features:
 8. Anonymous review system for students (Faculty will always see anonymous review)
 9. Anonymous review goes for approval to the admin before they are shown
 
-**Screenshots:**
 
 **Online Resources used:** 
 
@@ -46,4 +45,12 @@ By the end of this course, implemented features:
 1. Use of WebRTC in Consultation so that the consultation can be done online in video call
 2. Email Verification with SMTP mail system
 3. Other bug fixes.
+
+**Screenshots:**
+<img src="https://i.vgy.me/J1s2O9.png" alt="FacultyPedia Homepage" style=""/>
+<img src="https://i.vgy.me/MA1yq7.png" alt="FacultyPedia Login Page" style=""/>
+<img src="https://i.vgy.me/ge5UIZ.png" alt="FacultyPedia Profile Page" style=""/>
+<img src="https://i.vgy.me/q6gHlb.png" alt="FacultyPedia Review Page" style=""/>
+<img src="https://i.vgy.me/NzxeQi.png" alt="FacultyPedia Consultation Booking Page" style=""/>
+<img src="https://i.vgy.me/fscS1M.png" alt="FacultyPedia Browse Faculties Page" style=""/>
 

@@ -61,3 +61,15 @@ By the end of this course, implemented features:
 <figcaption>FacultyPedia Browse Faculties Page</figcaption>
 <img src="https://i.vgy.me/fscS1M.png" alt="FacultyPedia Browse Faculties Page" style=""/><br>
 
+
+
+### Other CSE391 Submissions
+
+| **Submission No.** | Github Link | Site Link | Question |
+| ----------- | ----------- | ----------- | ----------- |
+| Assignment 1 | [Click Here](https://github.com/errhythm/CSE391A1) | [Click Here](https://errhythm.github.io/CSE391A1) | [Click Here](https://github.com/errhythm/CSE391A1/blob/master/Assignment%201.pdf) |
+| Assignment 2 | [Click Here](https://github.com/errhythm/CSE391A2) | [Click Here](https://errhythm.github.io/CSE391A2) | [Click Here](https://github.com/errhythm/CSE391A2/blob/main/Assignment%202.pdf) |
+| Assignment 3 | [Click Here](https://github.com/errhythm/CSE391A3) | [Click Here](https://cse391.rhyst.art) | [Click Here]
+
+
+

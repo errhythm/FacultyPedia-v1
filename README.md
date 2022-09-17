@@ -47,8 +47,8 @@ By the end of this course, implemented features:
 3. Other bug fixes.
 
 **Screenshots:**
-<img src="https://i.vgy.me/J1s2O9.png" alt="FacultyPedia Homepage" style="height:300px;"/>
-<figcaption style="padding: 2px; text-align: center;opacity: 0.5;">FacultyPedia Homepage</figcaption>
+<img src="https://i.vgy.me/J1s2O9.png" alt="FacultyPedia Homepage" style=""/>
+<figcaption style="padding: 2px;text-align: center;opacity: 0.5;">FacultyPedia Homepage</figcaption>
 <img src="https://i.vgy.me/MA1yq7.png" alt="FacultyPedia Login Page" style=""/>
 <figcaption>FacultyPedia Login Page</figcaption>
 <img src="https://i.vgy.me/ge5UIZ.png" alt="FacultyPedia Profile Page" style=""/>

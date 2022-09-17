@@ -48,9 +48,15 @@ By the end of this course, implemented features:
 
 **Screenshots:**
 <img src="https://i.vgy.me/J1s2O9.png" alt="FacultyPedia Homepage" style=""/>
+<figcaption>FacultyPedia Homepage</figcaption>
 <img src="https://i.vgy.me/MA1yq7.png" alt="FacultyPedia Login Page" style=""/>
+<figcaption>FacultyPedia Login Page</figcaption>
 <img src="https://i.vgy.me/ge5UIZ.png" alt="FacultyPedia Profile Page" style=""/>
+<figcaption>FacultyPedia Profile Page</figcaption>
 <img src="https://i.vgy.me/q6gHlb.png" alt="FacultyPedia Review Page" style=""/>
+<figcaption>FacultyPedia Review Page</figcaption>
 <img src="https://i.vgy.me/NzxeQi.png" alt="FacultyPedia Consultation Booking Page" style=""/>
+<figcaption>FacultyPedia Consultation Booking Page</figcaption>
 <img src="https://i.vgy.me/fscS1M.png" alt="FacultyPedia Browse Faculties Page" style=""/>
+<figcaption>FacultyPedia Browse Faculties Page</figcaption>
 
